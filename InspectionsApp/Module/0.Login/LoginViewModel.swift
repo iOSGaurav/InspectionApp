@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 
-@MainActor
 class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
@@ -36,12 +35,10 @@ extension LoginViewModel: LoginViewModelProtocol {
         loginService.login(user: user) { [weak self] result in
             self?.isLoggingIn = false
             switch result {
-            case .success(let success):
-                if success {
-                    // Login successful
-                    self?.loginSuccess = true
-                    self?.errorMessage = nil
-                }
+            case .success():
+                // Login successful
+                self?.loginSuccess = true
+                self?.errorMessage = nil
             case .failure(let error):
                 // Login failed
                 self?.errorMessage = error.localizedDescription

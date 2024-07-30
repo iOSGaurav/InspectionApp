@@ -9,3 +9,6 @@ struct User {
     let email: String
     let password: String
 }
+struct UserError: Decodable {
+    let error: String
+}

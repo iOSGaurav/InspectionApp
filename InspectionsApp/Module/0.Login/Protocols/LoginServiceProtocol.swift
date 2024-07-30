@@ -6,5 +6,5 @@
 //
 
 protocol LoginServiceProtocol {
-    func login(user: User, completion: @escaping (Result<Bool, Error>) -> Void)
+    func login(user: User, completion: @escaping (Result<Void, Error>) -> Void)
 }
